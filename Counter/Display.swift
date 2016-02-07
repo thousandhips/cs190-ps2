@@ -5,14 +5,16 @@
 //  Created by Brian Hill github.com/brianhill on 1/26/16.
 //
 
+// Display is a subclass of UIView that draws 15 seven-segment components into whatever space is alotted to it.
+
 import UIKit
 
 // Each digit has 8 segments, lettered a-h.
 let segments = 8
 
-// We'll still call it a seven-segment component (SSC), even though the decimal point gives it an eight part.
+// We'll still call it a seven-segment component (SSC), even though the decimal point gives it an eighth part.
 
-// Coordinates within a 11x20 grid.
+// Coordinates within an 11x20 grid.
 
 let gridWidth = CGFloat(11)
 let gridHeight = CGFloat(20)
@@ -98,15 +100,13 @@ func rectToInsetRect(rect: CGRect) -> CGRect {
 class Display: UIView {
     
     // Draws a segment given its four corners, supplied in clockwise order.
-    // I put one bug in this code. Find it and fix it. Once it's fixed, you'll
-    // see a nicely drawn 8.
     func drawSegment(context: CGContextRef, upperLeft: CGPoint, upperRight: CGPoint, lowerRight: CGPoint, lowerLeft: CGPoint, on:Bool) {
         let color = on ? ledOnColor : ledOffColor
         CGContextSetFillColorWithColor(context, color)
         CGContextMoveToPoint(context, upperLeft.x, upperLeft.y)
         CGContextAddLineToPoint(context, upperRight.x, upperRight.y)
         CGContextAddLineToPoint(context, lowerRight.x, lowerRight.y)
-        CGContextAddLineToPoint(context, lowerRight.x, lowerLeft.y)
+        CGContextAddLineToPoint(context, lowerLeft.x, lowerLeft.y)
         CGContextAddLineToPoint(context, upperLeft.x, upperLeft.y)
         CGContextFillPath(context)
     }
@@ -147,19 +147,19 @@ class Display: UIView {
     // This is a 15-digit display.
     let digits = 15
 
-    // When you are done with this function, it should draw all 15 SSC's and it should use the masks array above to
-    // make the 15 SSCs show -1.23456790 99.
-    // Except for the bug fix in drawSegment, there is no need to modify any code outside of this function.
+    // This is the entry point for our custom drawing code.
     override func drawRect(rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()!
         let bounds = self.bounds
+        let segmentWidth = bounds.size.width / CGFloat(digits)
         let segmentHeight = bounds.size.height
         let xOrigin = bounds.origin.x
         let yOrigin = bounds.origin.y
-        // This needs re-doing. The segmentWidth is the whole view width. It should only be one-fifteenth of that.
-        let sscRect = CGRectMake(xOrigin, yOrigin, bounds.size.width, segmentHeight)
-        // This needs completing. It only draws one SSC. It needs to be put in a loop to show all 15 SSCs.
-        drawSSC(context, sscRect:sscRect, mask:segmentMasks[8])
+        // Loop to draw each of the 15 SSCs
+        for i in 0..<15 {
+            let sscRect = CGRectMake(xOrigin + CGFloat(i) * segmentWidth, yOrigin, segmentWidth, segmentHeight)
+            drawSSC(context, sscRect:sscRect, mask:masks[i])
+        }
     }
 
 }

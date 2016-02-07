@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  Counter
 //
-//  Created by Brian Hill ithub.com/brianhill on 1/25/16.
+//  Created by Brian Hill github.com/brianhill on 1/25/16.
 //
 
 import UIKit
