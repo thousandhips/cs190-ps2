@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D368F5EA1C680A9D003D7533 /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D368F5E91C680A9D003D7533 /* Clock.swift */; };
 		D3A658331C56F10E00F8FEEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A658321C56F10E00F8FEEB /* AppDelegate.swift */; };
 		D3A658351C56F10E00F8FEEB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A658341C56F10E00F8FEEB /* ViewController.swift */; };
 		D3A658381C56F10E00F8FEEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3A658361C56F10E00F8FEEB /* Main.storyboard */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		D310E85E1C5C3C550007527E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D368F5E91C680A9D003D7533 /* Clock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
 		D3A6582F1C56F10E00F8FEEB /* Counter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Counter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3A658321C56F10E00F8FEEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3A658341C56F10E00F8FEEB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				D3A658391C56F10E00F8FEEB /* Assets.xcassets */,
 				D3A6583B1C56F10E00F8FEEB /* LaunchScreen.storyboard */,
 				D3A6583E1C56F10E00F8FEEB /* Info.plist */,
+				D368F5E91C680A9D003D7533 /* Clock.swift */,
 			);
 			path = Counter;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 			files = (
 				D3A658351C56F10E00F8FEEB /* ViewController.swift in Sources */,
 				D3A658551C58154900F8FEEB /* Display.swift in Sources */,
+				D368F5EA1C680A9D003D7533 /* Clock.swift in Sources */,
 				D3A658331C56F10E00F8FEEB /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -19,6 +19,8 @@ let segments = 8
 let gridWidth = CGFloat(11)
 let gridHeight = CGFloat(20)
 
+// Overstrikes are shown with x's in the diagram below.
+
 //              11
 //    012345678901
 //  0 aaaaaaaaabb
@@ -50,15 +52,16 @@ let segmentOutlines = [
     0, 18,  9, 18,  9, 20,  0, 20, // d
     0, 10,  2, 10,  2, 18,  0, 18, // e
     0,  2,  2,  2,  2, 10,  0, 10, // f
-    1,  9, 10,  9, 10, 11,  1, 11, // g -- g actually overstrikes a bit of b, c, e and f. These overstrikes are shown with x's in the diagram above.
+    1,  9, 10,  9, 10, 11,  1, 11, // g -- g actually overstrikes a bit of b, c, e and f.
     5, 16,  7, 16,  7, 18,  5, 18, // h
 ]
 
 let middle = gridHeight / 2.0
 let tiltPlusMinus = CGFloat(1.0)
 
-let ledOnColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), [1.0, 0.1, 0.2, 1.0]) // mostly red, but with a little green and a little more blue
-let ledOffColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), [0.2, 0.1, 0.1, 1.0]) // reddish gray
+let ledOnColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), [1.0, 0.1, 0.2, 1.0]) // mostly red
+let ledDimColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), [0.8, 0.08, 0.16, 1.0]) // dimmed variant of ledOnColor
+let ledOffColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), [0.2, 0.02, 0.04, 1.0]) // dark variant of ledOnColor
 
 let segmentMasks = [
     0b00111111, // 0
@@ -80,7 +83,8 @@ func indicesToPoint(i: Int, j: Int, insetRect: CGRect) -> CGPoint {
     let offset = 8 * i + 2 * j
     let rawX = segmentOutlines[offset]
     let rawY = segmentOutlines[offset + 1]
-    let x = insetRect.origin.x + (CGFloat(rawX) - tiltPlusMinus * (CGFloat(rawY) - middle) / middle) * insetRect.size.width / gridWidth
+    let tilt = tiltPlusMinus * (CGFloat(rawY) - middle) / middle
+    let x = insetRect.origin.x + (CGFloat(rawX) - tilt) * insetRect.size.width / gridWidth
     let y = insetRect.origin.y + CGFloat(rawY) * insetRect.size.height / gridHeight
     return CGPointMake(x, y)
 }
@@ -94,14 +98,32 @@ func rectToInsetRect(rect: CGRect) -> CGRect {
     let height = rect.size.height
     let insetWidthAmount = insetFraction * width
     let insetHeightAmount = insetFraction * height
-    return CGRectMake(rect.origin.x + insetWidthAmount, rect.origin.y + insetHeightAmount, width - 2.0 * insetWidthAmount, height - 2.0 * insetHeightAmount)
+    let newWidth = width - 2.0 * insetWidthAmount
+    let newHeight = height - 2.0 * insetHeightAmount
+    return CGRectMake(rect.origin.x + insetWidthAmount, rect.origin.y + insetHeightAmount, newWidth, newHeight)
 }
 
 class Display: UIView {
     
+    // To save batteries, the original HP calculators had the LEDs off some of the time.
+    // This variable is consulted in drawSegment.
+    var strobeOn = true
+    
     // Draws a segment given its four corners, supplied in clockwise order.
-    func drawSegment(context: CGContextRef, upperLeft: CGPoint, upperRight: CGPoint, lowerRight: CGPoint, lowerLeft: CGPoint, on:Bool) {
-        let color = on ? ledOnColor : ledOffColor
+    // On determines whether the segment should be on.
+    // However the segment is off if strobeOn is false.
+    func drawSegment(context: CGContextRef,
+                     upperLeft: CGPoint,
+                     upperRight: CGPoint,
+                     lowerRight: CGPoint,
+                     lowerLeft: CGPoint,
+                     on:Bool)
+    {
+        // Compound ternary operator (icch). Covers all the cases though.
+        // on && strobeOn --> ledOnColor
+        // on && strobeOff --> ledDimColor
+        // off --> ledOffColor
+        let color = on && strobeOn ? ledOnColor : (on ? ledDimColor : ledOffColor)
         CGContextSetFillColorWithColor(context, color)
         CGContextMoveToPoint(context, upperLeft.x, upperLeft.y)
         CGContextAddLineToPoint(context, upperRight.x, upperRight.y)
@@ -120,7 +142,12 @@ class Display: UIView {
             let lowerRight = indicesToPoint(segment, j:2, insetRect:insetRect)
             let lowerLeft  = indicesToPoint(segment, j:3, insetRect:insetRect)
             let on = Bool(mask & 1<<segment)
-            self.drawSegment(context, upperLeft:upperLeft, upperRight:upperRight, lowerRight:lowerRight, lowerLeft:lowerLeft, on:on)
+            self.drawSegment(context,
+                             upperLeft:upperLeft,
+                             upperRight:upperRight,
+                             lowerRight:lowerRight,
+                             lowerLeft:lowerLeft,
+                             on:on)
         }
     }
     
