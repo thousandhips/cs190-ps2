@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 // The conventions were taken from:
 //  * http://www.nand2tetris.org/lectures/PDF/ (Slide 4 of "lecture 03 sequential logic.pdf")
 //  * https://www.cs.umd.edu/class/sum2003/cmsc311/Notes/ ("What's a Clock?" and "Introduction to Flip Flops: D and T")

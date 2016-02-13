@@ -18,7 +18,7 @@ let clockTicksPerAnimationInterval = 100 // Adjust to make calculator's computat
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var display: Display?
+    @IBOutlet weak var displayView: DisplayView?
     
     var displayLink: CADisplayLink?
     
@@ -55,8 +55,8 @@ class ViewController: UIViewController {
             clock.drive() // should take clock from high to low
         }
         prepares += 1
-        display?.strobeOn = prepares % strobeMultiple != 0
-        display?.setNeedsDisplay()
+        displayView?.strobeOn = prepares % strobeMultiple != 0
+        displayView?.setNeedsDisplay()
     }
     
 }

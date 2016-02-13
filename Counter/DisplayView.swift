@@ -1,16 +1,19 @@
 //
-//  Display.swift
+//  DisplayView.swift
 //  Counter
 //
 //  Created by Brian Hill github.com/brianhill on 1/26/16.
 //
 
-// Display is a subclass of UIView that draws 15 seven-segment components into whatever space is alotted to it.
+// DisplayView is a subclass of UIView that draws 15 seven-segment components into whatever space is alotted to it.
 
 import UIKit
 
 // Each digit has 8 segments, lettered a-h.
 let segments = 8
+
+// This is a 15-digit display.
+let numberOfSSCs = 15
 
 // We'll still call it a seven-segment component (SSC), even though the decimal point gives it an eighth part.
 
@@ -63,22 +66,6 @@ let ledOnColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), [1.0, 0.1, 0.2, 1.
 let ledDimColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), [0.8, 0.08, 0.16, 1.0]) // dimmed variant of ledOnColor
 let ledOffColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), [0.2, 0.02, 0.04, 1.0]) // dark variant of ledOnColor
 
-let segmentMasks = [
-    0b00111111, // 0
-    0b00000110, // 1
-    0b01011011, // 2
-    0b01001111, // 3
-    0b01100110, // 4
-    0b01101101, // 5
-    0b01111101, // 6
-    0b00000111, // 7
-    0b01111111, // 8
-    0b01101111, // 9
-    0b10000000, // .
-    0b01000000, // -
-    0b00000000, //
-]
-
 func indicesToPoint(i: Int, j: Int, insetRect: CGRect) -> CGPoint {
     let offset = 8 * i + 2 * j
     let rawX = segmentOutlines[offset]
@@ -103,7 +90,7 @@ func rectToInsetRect(rect: CGRect) -> CGRect {
     return CGRectMake(rect.origin.x + insetWidthAmount, rect.origin.y + insetHeightAmount, newWidth, newHeight)
 }
 
-class Display: UIView {
+class DisplayView: UIView {
     
     // To save batteries, the original HP calculators had the LEDs off some of the time.
     // This variable is consulted in drawSegment.
@@ -134,14 +121,14 @@ class Display: UIView {
     }
     
     // Draws one seven-segment component (SSC).
-    func drawSSC(context:CGContextRef, sscRect:CGRect, mask:Int) {
+    func drawSSC(context:CGContextRef, sscRect:CGRect, mask:UInt8) {
         let insetRect = rectToInsetRect(sscRect)
         for segment in 0 ..< segments {
             let upperLeft  = indicesToPoint(segment, j:0, insetRect:insetRect)
             let upperRight = indicesToPoint(segment, j:1, insetRect:insetRect)
             let lowerRight = indicesToPoint(segment, j:2, insetRect:insetRect)
             let lowerLeft  = indicesToPoint(segment, j:3, insetRect:insetRect)
-            let on = Bool(mask & 1<<segment)
+            let on = Bool(Int(mask) & 1<<segment)
             self.drawSegment(context,
                              upperLeft:upperLeft,
                              upperRight:upperRight,
@@ -150,43 +137,17 @@ class Display: UIView {
                              on:on)
         }
     }
-    
-    // Here are the 15 masks, one for each digit of the 15-digit display. This constant array is currently unused.
-    // Mask is for the following display: -1.23456790 99
-    let masks = [
-        segmentMasks[11], // -
-        segmentMasks[1],  // 1
-        segmentMasks[10], // .
-        segmentMasks[2],  // 2
-        segmentMasks[3],  // 3
-        segmentMasks[4],  // 4
-        segmentMasks[5],  // 5
-        segmentMasks[6],  // 6
-        segmentMasks[7],  // 7
-        segmentMasks[8],  // 8
-        segmentMasks[9],  // 9
-        segmentMasks[0],  // 0
-        segmentMasks[12], //
-        segmentMasks[9],  // 9
-        segmentMasks[9],  // 9
-    ]
-    
-    // This is a 15-digit display.
-    let digits = 15
 
     // This is the entry point for our custom drawing code.
     override func drawRect(rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()!
         let bounds = self.bounds
-        let segmentWidth = bounds.size.width / CGFloat(digits)
+        let segmentWidth = bounds.size.width / CGFloat(numberOfSSCs)
         let segmentHeight = bounds.size.height
         let xOrigin = bounds.origin.x
         let yOrigin = bounds.origin.y
+        let masks:[UInt8] = DisplayDecoder.sharedInstance.getMasks(CPUState.sharedInstance)
         // Loop to draw each of the 15 SSCs
-        for i in 0..<15 {
-            let sscRect = CGRectMake(xOrigin + CGFloat(i) * segmentWidth, yOrigin, segmentWidth, segmentHeight)
-            drawSSC(context, sscRect:sscRect, mask:masks[i])
-        }
     }
 
 }

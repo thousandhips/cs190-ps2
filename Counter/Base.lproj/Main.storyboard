@@ -19,26 +19,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oqm-Y6-cJi" customClass="Display" customModule="Counter" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ey4-3Y-bB7" customClass="DisplayView" customModule="Counter" customModuleProvider="target">
                                 <rect key="frame" x="20" y="20" width="560" height="68"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <accessibility key="accessibilityConfiguration">
-                                    <accessibilityTraits key="traits" notEnabled="YES"/>
-                                </accessibility>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="Oqm-Y6-cJi" secondAttribute="height" multiplier="165:20" id="W0v-FN-dsn"/>
+                                    <constraint firstAttribute="width" secondItem="ey4-3Y-bB7" secondAttribute="height" multiplier="165:20" id="01X-2i-mlH"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="Oqm-Y6-cJi" secondAttribute="trailing" id="9NK-N5-uHT"/>
-                            <constraint firstItem="Oqm-Y6-cJi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="r9g-wc-LZD"/>
-                            <constraint firstItem="Oqm-Y6-cJi" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="sa9-HH-GS6"/>
+                            <constraint firstItem="ey4-3Y-bB7" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Rro-oE-LSS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ey4-3Y-bB7" secondAttribute="trailing" id="a72-EM-8Aa"/>
+                            <constraint firstItem="ey4-3Y-bB7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="c0Z-O1-Sqr"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="display" destination="Oqm-Y6-cJi" id="KkC-ua-ekN"/>
+                        <outlet property="displayView" destination="ey4-3Y-bB7" id="3cv-om-SQm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
