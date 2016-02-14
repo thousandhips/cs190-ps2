@@ -59,4 +59,7 @@ class ViewController: UIViewController {
         displayView?.setNeedsDisplay()
     }
     
+    @IBAction func keyboardAction(sender: UIButton) {
+    }
+
 }
