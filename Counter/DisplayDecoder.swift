@@ -140,7 +140,8 @@ class DisplayDecoder {
         idxA -= 1
         idxB -= 1
         
-        // The exponent is in 9's complement if it is negative.
+        // The exponent in C is in 10's complement if it is negative.
+        // However, the exponent in A is already as the user enters and views it.
         while idxA >= 0 {
             let nibbleB = registerB.nibbles[idxB]
             // Only if we are not blanked do we need to show what is in the exponent
