@@ -62,6 +62,41 @@ let segmentOutlines = [
 let middle = gridHeight / 2.0
 let tiltPlusMinus = CGFloat(1.0)
 
+typealias Mask = UInt8
+
+enum Masks: Mask {
+    case M0 = 0b00111111 // Digit 0
+    case M1 = 0b00000110 // Digit 1
+    case M2 = 0b01011011 // Digit 2
+    case M3 = 0b01001111 // Digit 3
+    case M4 = 0b01100110 // Digit 4
+    case M5 = 0b01101101 // Digit 5
+    case M6 = 0b01111101 // Digit 6
+    case M7 = 0b00000111 // Digit 7
+    case M8 = 0b01111111 // Digit 8
+    case M9 = 0b01101111 // Digit 9
+    case Point = 0b10000000 // Decimal Point
+    case Minus = 0b01000000 // Minus Sign
+    case Blank = 0b00000000 // Blank or Masked
+}
+
+// A dictionary of masks by character is super-handy for converting.
+let masksByCharacter = [
+    DisplayableCharacters.Char0: Masks.M0,
+    DisplayableCharacters.Char1: Masks.M1,
+    DisplayableCharacters.Char2: Masks.M2,
+    DisplayableCharacters.Char3: Masks.M3,
+    DisplayableCharacters.Char4: Masks.M4,
+    DisplayableCharacters.Char5: Masks.M5,
+    DisplayableCharacters.Char6: Masks.M6,
+    DisplayableCharacters.Char7: Masks.M7,
+    DisplayableCharacters.Char8: Masks.M8,
+    DisplayableCharacters.Char9: Masks.M9,
+    DisplayableCharacters.Point: Masks.Point,
+    DisplayableCharacters.Minus: Masks.Minus,
+    DisplayableCharacters.Blank: Masks.Blank,
+]
+
 let ledOnColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), [1.0, 0.1, 0.2, 1.0]) // mostly red
 let ledDimColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), [0.8, 0.08, 0.16, 1.0]) // dimmed variant of ledOnColor
 let ledOffColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), [0.2, 0.02, 0.04, 1.0]) // dark variant of ledOnColor

@@ -27,49 +27,134 @@
 //    4) results to be displayed in “scientific notation” has 1 10-12,
 //
 //    A=01000000000912  B=02999999999000  C=01000000000988
+//
+// The A register is set up to hold the display in floating point format and its digits
+// are in proper order while the B register is used as a masking register with digit “9”
+// for each digit position to be blanked, digit”2” for the decimal point position and
+// digit “0” for displayed digit position.
+//
+// Fortunately Laporte also has a page devoted specifically to floating point representation,
+//
+// http://home.citycable.ch/pierrefleur/Jacques-Laporte/Floating%20point.htm
+//
+// and the page has an example with both a negative mantissa and a negative exponent:
+//
+//    The exponent is coded in tens complement notation, so that the number -1.25 x 10^-2 is
+//    represented in normalized form as C=91250000000998.
+//
+//    The machine uses 3 registers to represent a number, register C holds the normalized form,
+//    register A has the displayable form (floating point) A=91250000000902 and register B holds
+//    a mask to correctly position the decimal point: B=02009999999000.
 
-typealias Mask = UInt8
-
-enum SegmentMasks: UInt8 {
-    case D0 = 0b00111111 // Digit 0
-    case D1 = 0b00000110 // Digit 1
-    case D2 = 0b01011011 // Digit 2
-    case D3 = 0b01001111 // Digit 3
-    case D4 = 0b01100110 // Digit 4
-    case D5 = 0b01101101 // Digit 5
-    case D6 = 0b01111101 // Digit 6
-    case D7 = 0b00000111 // Digit 7
-    case D8 = 0b01111111 // Digit 8
-    case D9 = 0b01101111 // Digit 9
-    case Point = 0b10000000 // Decimal Point
-    case Minus = 0b01000000 // Minus Sign
-    case Blank = 0b00000000 // Blank or Masked
+enum DisplayableCharacters: Character {
+    case Char0 = "0"
+    case Char1 = "1"
+    case Char2 = "2"
+    case Char3 = "3"
+    case Char4 = "4"
+    case Char5 = "5"
+    case Char6 = "6"
+    case Char7 = "7"
+    case Char8 = "8"
+    case Char9 = "9"
+    case Point = "."
+    case Minus = "-"
+    case Blank = " "
 }
 
-import Foundation
+enum RegisterASpecialValues: Nibble {
+    case Minus = 0b1001 // In two places in Register A, 9 in BCD has the interpretation of Minus.
+}
+
+enum RegisterBSpecialValues: Nibble {
+    case Point = 0b0010 // In Register B, 2 in BCD has the interpretation of Point.
+    case Blank = 0b1001 // In Register B, 9 in BCD has the interpretation of Blank.
+}
+
+// An array of the displayable characters is super-handy for converting integers to the corresponding characters.
+let displayableCharacters: [DisplayableCharacters] = [
+    DisplayableCharacters.Char0,
+    DisplayableCharacters.Char1,
+    DisplayableCharacters.Char2,
+    DisplayableCharacters.Char3,
+    DisplayableCharacters.Char4,
+    DisplayableCharacters.Char5,
+    DisplayableCharacters.Char6,
+    DisplayableCharacters.Char7,
+    DisplayableCharacters.Char8,
+    DisplayableCharacters.Char9
+]
 
 class DisplayDecoder {
     
     static let sharedInstance = DisplayDecoder()
     
-    func getMasks(cpuState: CPUState) -> [UInt8] {
-        return [
-            SegmentMasks.Minus.rawValue,
-            SegmentMasks.D1.rawValue,
-            SegmentMasks.Point.rawValue,
-            SegmentMasks.D2.rawValue,
-            SegmentMasks.D3.rawValue,
-            SegmentMasks.D4.rawValue,
-            SegmentMasks.D5.rawValue,
-            SegmentMasks.D6.rawValue,
-            SegmentMasks.D7.rawValue,
-            SegmentMasks.D8.rawValue,
-            SegmentMasks.D9.rawValue,
-            SegmentMasks.D0.rawValue,
-            SegmentMasks.Blank.rawValue,
-            SegmentMasks.D9.rawValue,
-            SegmentMasks.D9.rawValue
-        ]
+    // This function consults registers A and B returns an array of
+    // 15 displayable characters following the rules elucidated by Laporte.
+    func getDisplayableCharacters(registerA: Register, registerB: Register) -> [DisplayableCharacters] {
+        
+        // Initialize the characters to blanks.
+        var characters = [DisplayableCharacters](count:numberOfSSCs, repeatedValue:DisplayableCharacters.Blank)
+        
+        // The following three variables
+        // will be incremented and decremented more or less in step.
+        var idxA = RegisterLength - 1
+        var idxB = RegisterLength - 1
+        var idxCharacters = 0
+        
+        if registerA.nibbles[idxA] == RegisterASpecialValues.Minus.rawValue {
+            // The leading digit of the mantissa is a 9 means display a minus sign in front of the mantissa.
+            characters[idxCharacters] = DisplayableCharacters.Minus
+        }
+        // Increment/decrement
+        idxA -= 1
+        idxCharacters += 1
+        
+        while idxA >= ExponentLength {
+            var nibbleB = registerB.nibbles[idxB]
+            // Consume the decimal point if present and move along.
+            if nibbleB == RegisterBSpecialValues.Point.rawValue {
+                characters[idxCharacters] = DisplayableCharacters.Point
+                // Increment/decrement
+                idxCharacters += 1
+                idxB -= 1
+                nibbleB = registerB.nibbles[idxB]
+            }
+            // Only if we are not blanked do we need to show what is in A
+            if nibbleB != RegisterBSpecialValues.Blank.rawValue {
+                let nibble = registerA.nibbles[idxA]
+                characters[idxCharacters] = displayableCharacters[Int(nibble)]
+            }
+            // Increment/decrement
+            idxCharacters += 1
+            idxA -= 1
+            idxB -= 1
+        }
+        
+        let exponentIsNegative = registerA.nibbles[idxA] == RegisterASpecialValues.Minus.rawValue
+        if exponentIsNegative {
+            characters[idxCharacters] = DisplayableCharacters.Minus
+        }
+        // Increment/decrement
+        idxCharacters += 1
+        idxA -= 1
+        idxB -= 1
+        
+        // The exponent is in 9's complement if it is negative.
+        while idxA >= 0 {
+            let nibbleB = registerB.nibbles[idxB]
+            // Only if we are not blanked do we need to show what is in the exponent
+            if nibbleB != RegisterBSpecialValues.Blank.rawValue {
+                let nibble = registerA.nibbles[idxA]
+                characters[idxCharacters] = displayableCharacters[Int(nibble)]
+            }
+            // Increment/decrement
+            idxCharacters += 1
+            idxA -= 1
+            idxB -= 1
+        }
+        
+        return characters
     }
 }
 
