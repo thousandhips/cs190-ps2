@@ -42,4 +42,4 @@ If you want to see a real Hewlett-Packard 35, I can bring one to office hours.
 
 5. When completed, and before the time the problem set is due, commit your changes to your fork of the repository. More detailed directions for this step were also given in the README for Problem Set #1. I should be able to simply clone your fork, build it and execute it in my environment without encountering any warnings, adding any dependencies or making any modifications.
 
-###### _The contents of this repository are licensed under the_ [Creative Commons Attribution-ShareAlike License](http://creativecommons.org/licenses/by-sa/3.0/
+###### _The contents of this repository are licensed under the_ [Creative Commons Attribution-ShareAlike License](http://creativecommons.org/licenses/by-sa/3.0/)
