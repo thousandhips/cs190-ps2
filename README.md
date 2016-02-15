@@ -1,20 +1,34 @@
-# CS 190 Problem Set #2&mdash;A Calculator that Just Counts
+# CS 190 Problem Set #2&mdash;Accepting Digit Entry
+
+In this problem set, you will complete a keyboard that enters digits into calculator registers A and B as the user presses the buttons.
 
 Course Home Page: http://physics.stmarys-ca.edu/classes/CS190_S16/index.html.
 
-Due: By the beginning of class, Tuesday, February 23rd, 2016. 
+My St. Mary's Home Page: http://physics.stmarys-ca.edu/lecturers/brianrhill/index.html.
+
+Due: By the beginning of class, Tuesday, February 23rd, 2016.
 ## Reading that Might be Helpful for this Problem Set
 
 * iOS Technology (Windows and Views):
  * https://developer.apple.com/library/ios/documentation/WindowsViews/Conceptual/ViewPG_iPhoneOS/Introduction/Introduction.html
 * iOS Technology (Creating an Outlet Connection):
  * https://developer.apple.com/library/ios/recipes/xcode_help-IB_connections/chapters/CreatingOutlet.html (Unfortunately the code examples in this document are Objective-C)
-* Pretty Advanced iOS Technology (IB Outlets and Animation with CADisplayLink):
+* More Advanced iOS Technology (if you want to see how I made the display flicker):
  * https://developer.apple.com/library/ios/documentation/QuartzCore/Reference/CADisplayLink_ClassRef/index.html.
 * Computer Science (Objects and Protocols in the Swift language):
  * https://itunes.apple.com/us/book/the-swift-programming-language/id881256329.
 
 ## Directions Specific to this Problem Set
+
+THIS IS A WORK IN PROGRESS. IF YOU ARE READING THIS IN YOUR FORK, THEN YOU FORKED BEFORE I FINISHED WRITING THE PROBLEM SET. PLEASE DELETE YOUR FORK AND THEN FORK AGAIN AFTER I HAVE FINISHED WRITING IT UP.
+
+1. (2 pts) The keyboard is incomplete. Add the nine missing buttons. Make sure they align nicely with the buttons that are already present and that the view constraints do not generate warnings, and work reasonably in portrait mode only with a couple of different iPhone simulations.
+
+2. (2 pts) Connect the new buttons up using the target-action method defined on the view controller. You can check your work by setting a breakpoint in the debugger and making sure that it is hit each time you press a button.
+
+3. (6 pts) The only two keys on the keyboard that do anything right now are the Enter Key, the 0 key, and the Pi key. What The Pi key does is exactly as if you had typed 3.141592654 and then pressed Enter, but the Pi just goes straight to the result. Your job is to make the CHS, EEX, CLX, 1, 2, 3, 4, 5, 6, 7, 8, 9 and Decimal Point keys all work. To do this, you will have to read and understand the way the calculator holds data in Registers A, B and C. The relevant references for this are in the comments in the code. You can QA your work by comparing what happens when you hit the ENTER, CHS, EEX, CLx, 0, DecimalPoint, Pi, 1, 2, 3, 4, 5, 6, 7, 8 and 9 keys. There should be perfect agreement in what is displayed. If there isn't, well, Houston, we have a problem.
+
+If you want to see a real Hewlett-Packard 35, I can bring one to office hours.
 
 ## General Directions for all Problem Sets
 
