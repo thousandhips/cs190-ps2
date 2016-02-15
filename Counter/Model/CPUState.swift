@@ -25,11 +25,30 @@ let RegisterLength = 14
 // This is how many of the nibbles are devoted to the exponent:
 let ExponentLength = 3
 
+import Foundation
+
 // A register is 14 nibbles (56 bits). Mostly nibbles are used to represent the digits 0-9, but the leftmost one,
 // nibble 13, corresponds to the sign of the mantissa, nibbles 12 to 3 inclusive represent 10 digits
 // of mantissa, and nibbles 2 to 0 represent the exponent.
 struct Register {
-    var nibbles = [Nibble](count:RegisterLength, repeatedValue: UInt8(0))
+    var nibbles: [Nibble] = [Nibble](count:RegisterLength, repeatedValue: UInt8(0))
+    
+    // Hmmm. It seems I need the empty initializer because I created init(fromDecimalString:).
+    init() {}
+    
+    // Initialize a register from a fourteen-digit decimal string (e.g., "91250000000902")
+    init(fromDecimalString: String) {
+        let characters = Array(fromDecimalString.characters)
+        assert(RegisterLength == characters.count)
+        var characterIdx = 0
+        var nibbleIdx = RegisterLength - 1
+        while nibbleIdx >= 0 {
+            let char: Character = characters[characterIdx]
+            nibbles[nibbleIdx] = Nibble(Int(String(char))!)
+            characterIdx += 1
+            nibbleIdx -= 1
+        }
+    }
 }
 
 struct CPUState {
@@ -40,40 +59,9 @@ struct CPUState {
     var status = Status()
     
     init() {
-        let registerA: Register = Register(nibbles:[
-            Nibble(2), //  0
-            Nibble(0), //  1
-            Nibble(9), //  2
-            Nibble(0), //  3
-            Nibble(0), //  4
-            Nibble(0), //  5
-            Nibble(0), //  6
-            Nibble(0), //  7
-            Nibble(0), //  8
-            Nibble(0), //  9
-            Nibble(5), // 10
-            Nibble(2), // 11
-            Nibble(1), // 12
-            Nibble(9)  // 13
-            ]
-        ) // 91250000000902
-        let registerB: Register = Register(nibbles:[
-            Nibble(0), //  0
-            Nibble(0), //  1
-            Nibble(0), //  2
-            Nibble(9), //  3
-            Nibble(9), //  4
-            Nibble(9), //  5
-            Nibble(9), //  6
-            Nibble(9), //  7
-            Nibble(9), //  8
-            Nibble(9), //  9
-            Nibble(0), // 10
-            Nibble(0), // 11
-            Nibble(2), // 12
-            Nibble(0)  // 13
-            ]
-        ) // 02009999999000
+        let registerA: Register = Register(fromDecimalString: "91250000000902")
+        let registerB: Register = Register(fromDecimalString: "02009999999000")
+
         registers[RegId.A.rawValue] = registerA
         registers[RegId.B.rawValue] = registerB
     }
