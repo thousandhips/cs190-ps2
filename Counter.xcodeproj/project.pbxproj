@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D32FDDDE1C72D93400129A74 /* DisplayDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32FDDDC1C72D93400129A74 /* DisplayDecoder.swift */; };
+		D32FDDDF1C72D93400129A74 /* KeyboardInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32FDDDD1C72D93400129A74 /* KeyboardInput.swift */; };
 		D368F5EA1C680A9D003D7533 /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D368F5E91C680A9D003D7533 /* Clock.swift */; };
-		D38A27791C6EB18E005C2D3F /* DisplayDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38A27781C6EB18E005C2D3F /* DisplayDecoder.swift */; };
 		D3985D541C6E4BA900B6DC35 /* CPUState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3985D531C6E4BA900B6DC35 /* CPUState.swift */; };
 		D3A658331C56F10E00F8FEEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A658321C56F10E00F8FEEB /* AppDelegate.swift */; };
 		D3A658351C56F10E00F8FEEB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A658341C56F10E00F8FEEB /* ViewController.swift */; };
@@ -31,8 +32,9 @@
 
 /* Begin PBXFileReference section */
 		D310E85E1C5C3C550007527E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D32FDDDC1C72D93400129A74 /* DisplayDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DisplayDecoder.swift; path = Model/DisplayDecoder.swift; sourceTree = "<group>"; };
+		D32FDDDD1C72D93400129A74 /* KeyboardInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyboardInput.swift; path = Model/KeyboardInput.swift; sourceTree = "<group>"; };
 		D368F5E91C680A9D003D7533 /* Clock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Clock.swift; path = Model/Clock.swift; sourceTree = "<group>"; };
-		D38A27781C6EB18E005C2D3F /* DisplayDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayDecoder.swift; sourceTree = "<group>"; };
 		D3985D531C6E4BA900B6DC35 /* CPUState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CPUState.swift; path = Model/CPUState.swift; sourceTree = "<group>"; };
 		D3A6582F1C56F10E00F8FEEB /* Counter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Counter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3A658321C56F10E00F8FEEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -68,9 +70,10 @@
 		D3985D551C6E4BDD00B6DC35 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D32FDDDC1C72D93400129A74 /* DisplayDecoder.swift */,
+				D32FDDDD1C72D93400129A74 /* KeyboardInput.swift */,
 				D3985D531C6E4BA900B6DC35 /* CPUState.swift */,
 				D368F5E91C680A9D003D7533 /* Clock.swift */,
-				D38A27781C6EB18E005C2D3F /* DisplayDecoder.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -220,7 +223,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3985D541C6E4BA900B6DC35 /* CPUState.swift in Sources */,
-				D38A27791C6EB18E005C2D3F /* DisplayDecoder.swift in Sources */,
+				D32FDDDF1C72D93400129A74 /* KeyboardInput.swift in Sources */,
+				D32FDDDE1C72D93400129A74 /* DisplayDecoder.swift in Sources */,
 				D3A658351C56F10E00F8FEEB /* ViewController.swift in Sources */,
 				D3A658551C58154900F8FEEB /* DisplayView.swift in Sources */,
 				D368F5EA1C680A9D003D7533 /* Clock.swift in Sources */,

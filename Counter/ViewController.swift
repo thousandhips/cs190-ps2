@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         displayLink?.addToRunLoop(NSRunLoop.currentRunLoop(), forMode:NSRunLoopCommonModes)
         displayLink?.paused = true
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -59,7 +59,16 @@ class ViewController: UIViewController {
         displayView?.setNeedsDisplay()
     }
     
-    @IBAction func keyboardAction(sender: UIButton) {
+    @IBAction func keyPressed(sender: UIButton) {
+        
+        let keyCode = KeyCode(sender.tag)
+        let key = Key(rawValue: keyCode)!
+        switch key {
+        case Key.Key0:
+            break
+        default:
+            print("keyPressed is unimplemented for key \(key)")
+        }
     }
-
+    
 }

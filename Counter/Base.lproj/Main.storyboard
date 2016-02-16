@@ -39,9 +39,6 @@
                                 <state key="normal" title="x^y">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="keyboardAction:" destination="BYZ-38-t0r" eventType="touchDown" id="Sub-09-epg"/>
-                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hx7-Oc-S9Y" userLabel="S b4 x^1/2">
                                 <rect key="frame" x="20" y="152" width="62" height="2"/>
@@ -49,7 +46,7 @@
                                     <rect key="frame" x="20" y="110" width="40" height="1"/>
                                 </variation>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q6C-jU-xXH">
+                            <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q6C-jU-xXH">
                                 <rect key="frame" x="20" y="154" width="62" height="62"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="x^1/2">
@@ -58,11 +55,8 @@
                                 <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="20" y="111" width="40" height="40"/>
                                 </variation>
-                                <connections>
-                                    <action selector="keyboardAction:" destination="BYZ-38-t0r" eventType="touchDown" id="Cec-Uw-1Em"/>
-                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxp-JE-1kP">
+                            <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxp-JE-1kP">
                                 <rect key="frame" x="144" y="154" width="63" height="62"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="arc">
@@ -71,11 +65,8 @@
                                 <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="100" y="111" width="40" height="40"/>
                                 </variation>
-                                <connections>
-                                    <action selector="keyboardAction:" destination="BYZ-38-t0r" eventType="touchDown" id="pq1-zK-5hW"/>
-                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cl4-5Y-cL9">
+                            <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cl4-5Y-cL9">
                                 <rect key="frame" x="269" y="154" width="62" height="62"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="sin">
@@ -84,11 +75,8 @@
                                 <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="180" y="111" width="40" height="40"/>
                                 </variation>
-                                <connections>
-                                    <action selector="keyboardAction:" destination="BYZ-38-t0r" eventType="touchDown" id="Gp6-Ds-Y4a"/>
-                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h9d-U2-oed">
+                            <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h9d-U2-oed">
                                 <rect key="frame" x="393" y="154" width="63" height="62"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="cos">
@@ -97,11 +85,8 @@
                                 <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="260" y="111" width="40" height="40"/>
                                 </variation>
-                                <connections>
-                                    <action selector="keyboardAction:" destination="BYZ-38-t0r" eventType="touchDown" id="dtN-te-9tt"/>
-                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CMY-nw-hkZ">
+                            <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CMY-nw-hkZ">
                                 <rect key="frame" x="518" y="154" width="62" height="62"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="tan">
@@ -110,9 +95,6 @@
                                 <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="340" y="111" width="40" height="40"/>
                                 </variation>
-                                <connections>
-                                    <action selector="keyboardAction:" destination="BYZ-38-t0r" eventType="touchDown" id="PEn-HE-mXm"/>
-                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="We6-2B-7kp" userLabel="S b4 1/x">
                                 <rect key="frame" x="20" y="216" width="62" height="2"/>
@@ -120,111 +102,81 @@
                                     <rect key="frame" x="20" y="151" width="40" height="2"/>
                                 </variation>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7tg-iQ-hV8">
+                            <button opaque="NO" tag="16" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7tg-iQ-hV8">
                                 <rect key="frame" x="20" y="218" width="62" height="62"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="1/x">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="keyboardAction:" destination="BYZ-38-t0r" eventType="touchDown" id="rs5-AN-S1K"/>
-                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K28-3T-Atw">
+                            <button opaque="NO" tag="17" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K28-3T-Atw">
                                 <rect key="frame" x="144" y="218" width="63" height="62"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="x~y">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="keyboardAction:" destination="BYZ-38-t0r" eventType="touchDown" id="GCl-qU-2Kd"/>
-                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Rs-H3-bxZ">
+                            <button opaque="NO" tag="18" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Rs-H3-bxZ">
                                 <rect key="frame" x="269" y="218" width="62" height="62"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Rv">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="keyboardAction:" destination="BYZ-38-t0r" eventType="touchDown" id="8TH-rd-tnK"/>
-                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UaK-42-cd5">
+                            <button opaque="NO" tag="19" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UaK-42-cd5">
                                 <rect key="frame" x="393" y="218" width="63" height="62"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="STO">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="keyboardAction:" destination="BYZ-38-t0r" eventType="touchDown" id="HAr-z3-xvD"/>
-                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WXz-vA-nee">
+                            <button opaque="NO" tag="20" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WXz-vA-nee">
                                 <rect key="frame" x="518" y="218" width="62" height="62"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="RCL">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="keyboardAction:" destination="BYZ-38-t0r" eventType="touchDown" id="nyO-b8-BYR"/>
-                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uKa-Fw-NyB" userLabel="S b4 ENTER">
                                 <rect key="frame" x="20" y="280" width="62" height="2"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G2h-fo-iG9">
+                            <button opaque="NO" tag="24" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G2h-fo-iG9">
                                 <rect key="frame" x="20" y="282" width="187" height="62"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="ENTER">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="keyboardAction:" destination="BYZ-38-t0r" eventType="touchDown" id="EBR-UM-VOb"/>
-                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2x8-rT-Bdn">
+                            <button opaque="NO" tag="25" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2x8-rT-Bdn">
                                 <rect key="frame" x="269" y="282" width="62" height="62"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="CHS">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="keyboardAction:" destination="BYZ-38-t0r" eventType="touchDown" id="PH4-PX-HdX"/>
-                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wBb-sh-eGT">
+                            <button opaque="NO" tag="26" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wBb-sh-eGT">
                                 <rect key="frame" x="393" y="282" width="63" height="62"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="EEX">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="keyboardAction:" destination="BYZ-38-t0r" eventType="touchDown" id="93E-Jv-J20"/>
-                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afO-WJ-56s">
+                            <button opaque="NO" tag="27" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afO-WJ-56s">
                                 <rect key="frame" x="518" y="282" width="62" height="62"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="CL x">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="keyboardAction:" destination="BYZ-38-t0r" eventType="touchDown" id="9es-9D-LdZ"/>
-                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Fk-eH-9fh" userLabel="S b4 -">
                                 <rect key="frame" x="20" y="344" width="62" height="2"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J4S-UO-CLf">
+                            <button opaque="NO" tag="32" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J4S-UO-CLf">
                                 <rect key="frame" x="20" y="346" width="62" height="62"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="-">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="keyboardAction:" destination="BYZ-38-t0r" eventType="touchDown" id="Rj1-sb-f0e"/>
-                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rRm-t9-lpn" userLabel="S b4 +">
                                 <rect key="frame" x="20" y="408" width="62" height="1"/>
@@ -232,7 +184,7 @@
                                     <rect key="frame" x="20" y="275" width="40" height="2"/>
                                 </variation>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmr-fq-tDf">
+                            <button opaque="NO" tag="40" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmr-fq-tDf">
                                 <rect key="frame" x="20" y="409" width="62" height="63"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="+">
@@ -241,9 +193,6 @@
                                 <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="20" y="277" width="40" height="40"/>
                                 </variation>
-                                <connections>
-                                    <action selector="keyboardAction:" destination="BYZ-38-t0r" eventType="touchDown" id="FzH-oC-pca"/>
-                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pjr-Ku-R5b" userLabel="S b4 *">
                                 <rect key="frame" x="20" y="472" width="62" height="1"/>
@@ -251,57 +200,51 @@
                                     <rect key="frame" x="20" y="317" width="40" height="1"/>
                                 </variation>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nvp-dx-0Of" userLabel="*">
+                            <button opaque="NO" tag="48" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nvp-dx-0Of" userLabel="*">
                                 <rect key="frame" x="20" y="473" width="62" height="62"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="*">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="keyboardAction:" destination="BYZ-38-t0r" eventType="touchDown" id="M5F-e7-Uq5"/>
-                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vMO-ee-hKd" userLabel="S b4 /">
                                 <rect key="frame" x="20" y="535" width="62" height="2"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5kc-A8-9Vd">
+                            <button opaque="NO" tag="56" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5kc-A8-9Vd">
                                 <rect key="frame" x="20" y="537" width="62" height="62"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="/">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="keyboardAction:" destination="BYZ-38-t0r" eventType="touchDown" id="VAg-Ll-1er"/>
-                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w6h-Oq-hAw" userLabel="0">
+                            <button opaque="NO" tag="57" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w6h-Oq-hAw" userLabel="0">
                                 <rect key="frame" x="144" y="537" width="94" height="62"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="0">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="keyboardAction:" destination="BYZ-38-t0r" eventType="touchDown" id="CMD-K4-8Db"/>
+                                    <action selector="keyPressed:" destination="BYZ-38-t0r" eventType="touchDown" id="kiM-lf-Gkg"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O60-6C-PEe" userLabel=".">
+                            <button opaque="NO" tag="58" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O60-6C-PEe" userLabel=".">
                                 <rect key="frame" x="316" y="537" width="93" height="62"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title=".">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="keyboardAction:" destination="BYZ-38-t0r" eventType="touchDown" id="PVT-hI-CkW"/>
+                                    <action selector="keyPressed:" destination="BYZ-38-t0r" eventType="touchDown" id="cER-wh-HAx"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8xp-uw-8sS">
+                            <button opaque="NO" tag="59" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8xp-uw-8sS">
                                 <rect key="frame" x="487" y="537" width="93" height="62"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="PI">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="keyboardAction:" destination="BYZ-38-t0r" eventType="touchDown" id="0cL-lg-GAe"/>
+                                    <action selector="keyPressed:" destination="BYZ-38-t0r" eventType="touchDown" id="DjH-s5-54S"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jhe-P9-TXj" userLabel="S b4 bottom">
@@ -310,54 +253,42 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tJh-P6-6n6" userLabel="S b4 log">
                                 <rect key="frame" x="82" y="90" width="62" height="62"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Al-Km-bEY">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Al-Km-bEY">
                                 <rect key="frame" x="144" y="90" width="63" height="62"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="log">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="keyboardAction:" destination="BYZ-38-t0r" eventType="touchDown" id="ojr-5e-4dT"/>
-                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yHP-nS-U9T" userLabel="S b4 ln">
                                 <rect key="frame" x="207" y="90" width="62" height="62"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cSE-xf-ixL">
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cSE-xf-ixL">
                                 <rect key="frame" x="269" y="90" width="62" height="62"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="ln">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="keyboardAction:" destination="BYZ-38-t0r" eventType="touchDown" id="DUE-hp-Gin"/>
-                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pDh-nJ-OyZ" userLabel="S b4 e^x">
                                 <rect key="frame" x="331" y="90" width="62" height="62"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QnW-gf-hnA">
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QnW-gf-hnA">
                                 <rect key="frame" x="393" y="90" width="63" height="62"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="e^x">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="keyboardAction:" destination="BYZ-38-t0r" eventType="touchDown" id="I9G-QR-7cJ"/>
-                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aAm-Os-tAd" userLabel="S b4 CLR">
                                 <rect key="frame" x="456" y="90" width="62" height="62"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NyD-oW-0jW">
+                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NyD-oW-0jW">
                                 <rect key="frame" x="518" y="90" width="62" height="62"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="CLR">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="keyboardAction:" destination="BYZ-38-t0r" eventType="touchDown" id="C50-BD-OZS"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -365,7 +296,6 @@
                             <constraint firstItem="xJh-j0-Y6h" firstAttribute="width" secondItem="zUv-yp-eQ2" secondAttribute="width" id="1Gi-iI-r0t"/>
                             <constraint firstItem="hx7-Oc-S9Y" firstAttribute="height" secondItem="uKa-Fw-NyB" secondAttribute="height" id="1PZ-TB-Szx"/>
                             <constraint firstItem="5kc-A8-9Vd" firstAttribute="height" secondItem="w6h-Oq-hAw" secondAttribute="height" id="3Fi-aI-saw"/>
-                            <constraint firstItem="G2h-fo-iG9" firstAttribute="width" secondItem="zUv-yp-eQ2" secondAttribute="width" multiplier="3" id="3bU-vC-qPk"/>
                             <constraint firstItem="zUv-yp-eQ2" firstAttribute="width" secondItem="rRm-t9-lpn" secondAttribute="width" id="3cv-cF-pAM"/>
                             <constraint firstItem="NyD-oW-0jW" firstAttribute="centerX" secondItem="afO-WJ-56s" secondAttribute="centerX" id="3pg-hB-Z2b"/>
                             <constraint firstItem="cSE-xf-ixL" firstAttribute="centerX" secondItem="cl4-5Y-cL9" secondAttribute="centerX" id="40u-Bj-m5U"/>
@@ -522,11 +452,6 @@
                             <constraint firstItem="NyD-oW-0jW" firstAttribute="width" secondItem="CMY-nw-hkZ" secondAttribute="width" id="zHd-gf-D2q"/>
                             <constraint firstItem="zUv-yp-eQ2" firstAttribute="bottom" secondItem="pDh-nJ-OyZ" secondAttribute="bottom" id="zQi-2U-ON7"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="3bU-vC-qPk"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="displayView" destination="ey4-3Y-bB7" id="3cv-om-SQm"/>

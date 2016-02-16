@@ -181,8 +181,13 @@ class DisplayView: UIView {
         let segmentHeight = bounds.size.height
         let xOrigin = bounds.origin.x
         let yOrigin = bounds.origin.y
-        let masks:[UInt8] = DisplayDecoder.sharedInstance.getMasks(CPUState.sharedInstance)
+        let cpuState = CPUState.sharedInstance
+        let registerA = cpuState.registers[RegId.A.rawValue]
+        let registerB = cpuState.registers[RegId.B.rawValue]
+        let displayDecoder = DisplayDecoder.sharedInstance
+        let displayableCharacters = displayDecoder.getDisplayableCharacters(registerA, registerB: registerB)
         // Loop to draw each of the 15 SSCs
+        drawSSC(context, sscRect:CGRectMake(0.0, 0.0, segmentWidth, segmentHeight), mask:Masks.M8.rawValue)
     }
 
 }
