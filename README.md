@@ -28,17 +28,17 @@ ACTUALLY, THAT'S WHAT I WANT YOU TO DO. I'M GOING TO SHOW YOU HOW TO REBASE ON T
 
 FOR PARTS 1. AND 2. THE ONLY FILE YOU SHOULD ALTER AND COMMIT IS Main.storyboard. AFTER THURSDAY'S CLASS, REBASE AND CONTINUE WITH PART 3.
 
-1. (2 pts) The keyboard is incomplete. Add the nine missing buttons. Make sure they align nicely with the buttons that are already present and that the view constraints do not generate warnings, and work reasonably in portrait mode only with a couple of different iPhone simulations.
+1. (2 pts) The keyboard is incomplete. Add the nine missing buttons. Make sure they align nicely with the buttons that are already present and that the view constraints do not generate warnings, and work reasonably (in portrait mode only because there isn't nearly enough space in landscape mode for this layout).
 
 2. (2 pts) Connect the new buttons up using the target-action method defined on the view controller. You can check your work by setting a breakpoint in the debugger and making sure that it is hit each time you press a button.
 
-3. (6 pts) The only two keys on the keyboard that do anything right now are the Enter Key, the 0 key, and the Pi key. What The Pi key does is exactly as if you had typed 3.141592654 and then pressed Enter, but the Pi just goes straight to the result. Your job is to make the CHS, EEX, CLX, 1, 2, 3, 4, 5, 6, 7, 8, 9 and Decimal Point keys all work. To do this, you will have to read and understand the way the calculator holds data in Registers A, B and C. The relevant references for this are in the comments in the code. You can QA your work by comparing what happens when you hit the ENTER, CHS, EEX, CLx, 0, DecimalPoint, PI, 1, 2, 3, 4, 5, 6, 7, 8 and 9 keys. There should be perfect agreement in what is displayed.
+3. (6 pts) The only two keys on the keyboard that do anything right now are the Enter Key, the 0 key, and the PI key. What The PI key does is exactly as if you had typed out 3.141592654 and then pressed Enter. Your job is to make the CHS, EEX, CLX, 1, 2, 3, 4, 5, 6, 7, 8, 9 and Decimal Point keys all work. To do this, you will have to read and understand the way the calculator holds data in Registers A, B and C. The relevant references for this are in the comments in the code. You can QA your work by comparing what happens when you hit the ENTER, CHS, EEX, CLx, 0, DecimalPoint, PI, 1, 2, 3, 4, 5, 6, 7, 8 and 9 keys. There should be perfect agreement in what is displayed with a real Hewlett-Packard 35.
 
-If you want to see a real Hewlett-Packard 35, ask me to get mine during office hours. If you are happy seeing somebody software emulation, try the HP-35 this guy has made:
+If you want to see a real Hewlett-Packard 35, ask me to show you mine during office hours. If you are happy seeing a software emulation, try the HP-35 this guy has:
 
 http://home.citycable.ch/pierrefleur/HP-Classic/HP-Classic.html
 
-That is an emulation, not a simulation. It is extremely faithful to the actual HP-35.
+That is an emulation, not a simulation. As a result, it is extremely faithful to an actual HP-35.
 
 Below is a little rebasing session.  The first part, you only need to do this once per repo, not once per rebase. The first part is to add my repo as the upstream remote:
 
@@ -56,7 +56,6 @@ Now here is what you do every time you want to merge in upstream changes (note t
     $ git rebase upstream/master
     HEAD is now at 4680732 Added keyboard codes.
     $ git push origin master
-    Everything up-to-date
     ```
 
 ## General Directions for all Problem Sets
