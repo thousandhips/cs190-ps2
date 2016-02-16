@@ -187,7 +187,11 @@ class DisplayView: UIView {
         let displayDecoder = DisplayDecoder.sharedInstance
         let displayableCharacters = displayDecoder.getDisplayableCharacters(registerA, registerB: registerB)
         // Loop to draw each of the 15 SSCs
-        drawSSC(context, sscRect:CGRectMake(0.0, 0.0, segmentWidth, segmentHeight), mask:Masks.M8.rawValue)
+        for i in 0..<numberOfSSCs {
+            let sscRect = CGRectMake(xOrigin + CGFloat(i) * segmentWidth, yOrigin, segmentWidth, segmentHeight)
+            let mask: UInt8 = masksByCharacter[displayableCharacters[i]]!.rawValue
+            drawSSC(context, sscRect:sscRect, mask:mask)
+        }
     }
 
 }
