@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		D32FDDDE1C72D93400129A74 /* DisplayDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32FDDDC1C72D93400129A74 /* DisplayDecoder.swift */; };
 		D32FDDDF1C72D93400129A74 /* KeyboardInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32FDDDD1C72D93400129A74 /* KeyboardInput.swift */; };
+		D33288A51C75A51B005C96F9 /* CPUStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33288A41C75A51B005C96F9 /* CPUStateTests.swift */; };
+		D33288A71C75A53F005C96F9 /* InputHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33288A61C75A53F005C96F9 /* InputHandler.swift */; };
+		D33288A91C75B9AF005C96F9 /* InputHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33288A81C75B9AF005C96F9 /* InputHandlerTests.swift */; };
+		D33288AA1C75BB05005C96F9 /* CPUState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3985D531C6E4BA900B6DC35 /* CPUState.swift */; };
+		D33288AB1C75BB0A005C96F9 /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D368F5E91C680A9D003D7533 /* Clock.swift */; };
+		D33288AC1C75BB0D005C96F9 /* DisplayDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32FDDDC1C72D93400129A74 /* DisplayDecoder.swift */; };
+		D33288AD1C75BB10005C96F9 /* InputHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33288A61C75A53F005C96F9 /* InputHandler.swift */; };
+		D33288AE1C75BB14005C96F9 /* KeyboardInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32FDDDD1C72D93400129A74 /* KeyboardInput.swift */; };
 		D368F5EA1C680A9D003D7533 /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D368F5E91C680A9D003D7533 /* Clock.swift */; };
 		D3985D541C6E4BA900B6DC35 /* CPUState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3985D531C6E4BA900B6DC35 /* CPUState.swift */; };
 		D3A658331C56F10E00F8FEEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A658321C56F10E00F8FEEB /* AppDelegate.swift */; };
@@ -16,7 +24,6 @@
 		D3A658381C56F10E00F8FEEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3A658361C56F10E00F8FEEB /* Main.storyboard */; };
 		D3A6583A1C56F10E00F8FEEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3A658391C56F10E00F8FEEB /* Assets.xcassets */; };
 		D3A6583D1C56F10E00F8FEEB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3A6583B1C56F10E00F8FEEB /* LaunchScreen.storyboard */; };
-		D3A658481C56F10F00F8FEEB /* CounterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A658471C56F10F00F8FEEB /* CounterTests.swift */; };
 		D3A658551C58154900F8FEEB /* DisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A658541C58154900F8FEEB /* DisplayView.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +41,9 @@
 		D310E85E1C5C3C550007527E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D32FDDDC1C72D93400129A74 /* DisplayDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DisplayDecoder.swift; path = Model/DisplayDecoder.swift; sourceTree = "<group>"; };
 		D32FDDDD1C72D93400129A74 /* KeyboardInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyboardInput.swift; path = Model/KeyboardInput.swift; sourceTree = "<group>"; };
+		D33288A41C75A51B005C96F9 /* CPUStateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPUStateTests.swift; sourceTree = "<group>"; };
+		D33288A61C75A53F005C96F9 /* InputHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InputHandler.swift; path = Model/InputHandler.swift; sourceTree = "<group>"; };
+		D33288A81C75B9AF005C96F9 /* InputHandlerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputHandlerTests.swift; sourceTree = "<group>"; };
 		D368F5E91C680A9D003D7533 /* Clock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Clock.swift; path = Model/Clock.swift; sourceTree = "<group>"; };
 		D3985D531C6E4BA900B6DC35 /* CPUState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CPUState.swift; path = Model/CPUState.swift; sourceTree = "<group>"; };
 		D3A6582F1C56F10E00F8FEEB /* Counter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Counter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,7 +54,6 @@
 		D3A6583C1C56F10E00F8FEEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D3A6583E1C56F10E00F8FEEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3A658431C56F10F00F8FEEB /* CounterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CounterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D3A658471C56F10F00F8FEEB /* CounterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterTests.swift; sourceTree = "<group>"; };
 		D3A658491C56F10F00F8FEEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3A658541C58154900F8FEEB /* DisplayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,10 +79,11 @@
 		D3985D551C6E4BDD00B6DC35 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D32FDDDC1C72D93400129A74 /* DisplayDecoder.swift */,
-				D32FDDDD1C72D93400129A74 /* KeyboardInput.swift */,
 				D3985D531C6E4BA900B6DC35 /* CPUState.swift */,
 				D368F5E91C680A9D003D7533 /* Clock.swift */,
+				D32FDDDC1C72D93400129A74 /* DisplayDecoder.swift */,
+				D33288A61C75A53F005C96F9 /* InputHandler.swift */,
+				D32FDDDD1C72D93400129A74 /* KeyboardInput.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -115,7 +125,8 @@
 		D3A658461C56F10F00F8FEEB /* CounterTests */ = {
 			isa = PBXGroup;
 			children = (
-				D3A658471C56F10F00F8FEEB /* CounterTests.swift */,
+				D33288A41C75A51B005C96F9 /* CPUStateTests.swift */,
+				D33288A81C75B9AF005C96F9 /* InputHandlerTests.swift */,
 				D3A658491C56F10F00F8FEEB /* Info.plist */,
 			);
 			path = CounterTests;
@@ -225,6 +236,7 @@
 				D3985D541C6E4BA900B6DC35 /* CPUState.swift in Sources */,
 				D32FDDDF1C72D93400129A74 /* KeyboardInput.swift in Sources */,
 				D32FDDDE1C72D93400129A74 /* DisplayDecoder.swift in Sources */,
+				D33288A71C75A53F005C96F9 /* InputHandler.swift in Sources */,
 				D3A658351C56F10E00F8FEEB /* ViewController.swift in Sources */,
 				D3A658551C58154900F8FEEB /* DisplayView.swift in Sources */,
 				D368F5EA1C680A9D003D7533 /* Clock.swift in Sources */,
@@ -236,7 +248,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3A658481C56F10F00F8FEEB /* CounterTests.swift in Sources */,
+				D33288AE1C75BB14005C96F9 /* KeyboardInput.swift in Sources */,
+				D33288A51C75A51B005C96F9 /* CPUStateTests.swift in Sources */,
+				D33288AD1C75BB10005C96F9 /* InputHandler.swift in Sources */,
+				D33288AC1C75BB0D005C96F9 /* DisplayDecoder.swift in Sources */,
+				D33288A91C75B9AF005C96F9 /* InputHandlerTests.swift in Sources */,
+				D33288AB1C75BB0A005C96F9 /* Clock.swift in Sources */,
+				D33288AA1C75BB05005C96F9 /* CPUState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,19 +396,20 @@
 		D3A658501C56F10F00F8FEEB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = CounterTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.1157pm.CounterTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Counter.app/Counter";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TEST_HOST = "";
 			};
 			name = Debug;
 		};
 		D3A658511C56F10F00F8FEEB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = CounterTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.1157pm.CounterTests;

@@ -5,6 +5,13 @@
 //  Created by Brian Hill github.com/brianhill on 2/12/16.
 //
 
+// As noted in README.md this web page has a very nice HP-35 emulator:
+//
+// http://home.citycable.ch/pierrefleur/HP-Classic/HP-Classic.html
+//
+//
+// Of course it is one thing to see it and another thing to decipher the implementation choices.
+//
 // We are told by Jacques Laporte how the A and B registers determine what is displayed:
 //
 // http://home.citycable.ch/pierrefleur/Jacques-Laporte/Output%20format.htm

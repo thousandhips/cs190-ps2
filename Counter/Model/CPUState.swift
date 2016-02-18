@@ -6,11 +6,13 @@
 //
 
 // CPUState defines the various CPU registers we need to simulate an HP-35.
-
+//
 // This reference is the most thorough, but at the moment a bunch of the image links are broken:
+//
 // http://home.citycable.ch/pierrefleur/Jacques-Laporte/A&R.htm
-
+//
 // This reference is sufficient:
+//
 // http://www.hpmuseum.org/techcpu.htm
 
 typealias Nibble = UInt8 // This should be UInt4, but the smallest width unsigned integer Swift has is UInt8.
@@ -69,7 +71,10 @@ struct Register {
 }
 
 class CPUState {
-    static let sharedInstance = CPUState()
+    
+    // The singleton starts in the traditional state that an HP-35 is in when you power it on.
+    // The display just shows 0 and a decimal point.
+    static let sharedInstance = CPUState(decimalStringA: "00000000000000", decimalStringB: "02999999999999")
     
     var registers = [Register](count:7, repeatedValue:Register())
     
@@ -89,19 +94,30 @@ class CPUState {
         canonicalize()
     }
     
-    func getRegisterValue(regId: RegId) {
+    // I hope these getters and setters are all I need to do the implementation needed for InputHandler.swift.
+    // Actually, they are probably the wrong primitives and will have to be redone. The right primitives are the ones
+    // in the HP-35 microcode!
+    
+    func getRegisterValue(regId: RegId) -> Register {
         return registers[regId.rawValue]
     }
     
-    func replaceRegisterValue(regId: RegId, newValue: Register) {
+    func setRegisterValue(regId: RegId, newValue: Register) {
         registers[regId.rawValue] = newValue
     }
-    
+
+    // Comments regarding canonicalize()....
+    //
     // Computes and stores register C from whatever is currently in A and B.
+    //
+    // This function is unimplemented. I hard-coded in a value that will make the first of the five test cases pass.
+    //
+    // When you are done re-implementing this method, all five test cases should pass (and any other test cases
+    // that obey the rules described in comments at the top of DisplayDecoder.swift).
+    //
+    // Make use of the enums RegisterASpecialValues and RegisterBSpecialValues so that you don't have to hard
+    // code "2" to mean a decimal point (similarly for the other special values).
     func canonicalize() {
-        // This function is unimplemented. I hard-coded in a value that will make the first of the five test cases pass.
-        // When you are done re-implementing this method, all five test cases (and any other test cases that obey
-        // the rules described in comments at the top of DisplayDecoder.swift).
         let registerC = Register(fromDecimalString: "01000000000002")
         registers[RegId.C.rawValue] = registerC
     }

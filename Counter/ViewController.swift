@@ -60,14 +60,13 @@ class ViewController: UIViewController {
     }
     
     @IBAction func keyPressed(sender: UIButton) {
-        
         let keyCode = KeyCode(sender.tag)
         let key = Key(rawValue: keyCode)!
         switch key {
         case Key.Key0:
-            break
+            print("\(__FUNCTION__) is unimplemented for key \(key)")
         default:
-            print("keyPressed is unimplemented for key \(key)")
+            print("\(__FUNCTION__) is unimplemented for key \(key)")
         }
     }
     
