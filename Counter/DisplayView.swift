@@ -12,9 +12,6 @@ import UIKit
 // Each digit has 8 segments, lettered a-h.
 let segments = 8
 
-// This is a 15-digit display.
-let numberOfSSCs = 15
-
 // We'll still call it a seven-segment component (SSC), even though the decimal point gives it an eighth part.
 
 // Coordinates within an 11x20 grid.

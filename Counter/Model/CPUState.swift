@@ -15,7 +15,7 @@
 
 typealias Nibble = UInt8 // This should be UInt4, but the smallest width unsigned integer Swift has is UInt8.
 
-typealias Pointer = UInt8 // Also should be UInt4.
+typealias Pointer = UInt8 // Also should be UInt4. In any case, we are not currently using this or Status.
 
 typealias Status = UInt16 // Should be a UInt12 if we wanted exactly as many status bits as the HP-35.
 
@@ -25,11 +25,16 @@ let RegisterLength = 14
 // This is how many of the nibbles are devoted to the exponent:
 let ExponentLength = 3
 
-import Foundation
+// Two utilities for testing and display:
+func nibbleFromCharacter(char: Character) -> Nibble {
+    return Nibble(Int(String(char))!)
+}
 
-// A register is 14 nibbles (56 bits). Mostly nibbles are used to represent the digits 0-9, but the leftmost one,
-// nibble 13, corresponds to the sign of the mantissa, nibbles 12 to 3 inclusive represent 10 digits
-// of mantissa, and nibbles 2 to 0 represent the exponent.
+func hexCharacterFromNibble(nibble: Nibble) -> Character {
+    return Character(String(format:"%1X", nibble))
+}
+
+// A register is 14 nibbles (56 bits). Mostly nibbles are used to represent the digits 0-9, but the leftmost one, nibble 13, corresponds to the sign of the mantissa, nibbles 12 to 3 inclusive represent 10 digits of mantissa, and nibbles 2 to 0 represent the exponent.
 struct Register {
     var nibbles: [Nibble] = [Nibble](count:RegisterLength, repeatedValue: UInt8(0))
     
@@ -44,27 +49,68 @@ struct Register {
         var nibbleIdx = RegisterLength - 1
         while nibbleIdx >= 0 {
             let char: Character = characters[characterIdx]
-            nibbles[nibbleIdx] = Nibble(Int(String(char))!)
+            nibbles[nibbleIdx] = nibbleFromCharacter(char)
             characterIdx += 1
             nibbleIdx -= 1
         }
     }
+    
+    func asDecimalString() -> String {
+        var digits: String = ""
+        var nibbleIdx = RegisterLength - 1
+        while nibbleIdx >= 0 {
+            let nibble = nibbles[nibbleIdx]
+            let hexChar = hexCharacterFromNibble(nibble)
+            digits.append(hexChar)
+            nibbleIdx -= 1
+        }
+        return digits 
+    }
 }
 
-struct CPUState {
+class CPUState {
     static let sharedInstance = CPUState()
     
     var registers = [Register](count:7, repeatedValue:Register())
-    var pointer = Pointer(0)
-    var status = Status()
     
-    init() {
-        let registerA: Register = Register(fromDecimalString: "91250000000902")
-        let registerB: Register = Register(fromDecimalString: "02009999999000")
-
+    // All the important initialization is done above when registers is assigned.
+    init() {}
+    
+    // A method provided prinicipally for testing. Allows the state of the registers that record user input to be
+    // initialized from decimal strings. Register C will be canonicalized from registers A and B. The remaining
+    // registers will be initialized to zeros.
+    init(decimalStringA: String, decimalStringB: String) {
+        let registerA = Register(fromDecimalString: decimalStringA)
+        let registerB = Register(fromDecimalString: decimalStringB)
+        
         registers[RegId.A.rawValue] = registerA
         registers[RegId.B.rawValue] = registerB
+        
+        canonicalize()
     }
+    
+    func getRegisterValue(regId: RegId) {
+        return registers[regId.rawValue]
+    }
+    
+    func replaceRegisterValue(regId: RegId, newValue: Register) {
+        registers[regId.rawValue] = newValue
+    }
+    
+    // Computes and stores register C from whatever is currently in A and B.
+    func canonicalize() {
+        // This function is unimplemented. I hard-coded in a value that will make the first of the five test cases pass.
+        // When you are done re-implementing this method, all five test cases (and any other test cases that obey
+        // the rules described in comments at the top of DisplayDecoder.swift).
+        let registerC = Register(fromDecimalString: "01000000000002")
+        registers[RegId.C.rawValue] = registerC
+    }
+    
+    func decimalStringForRegister(regId: RegId) -> String {
+        let register = registers[regId.rawValue]
+        return register.asDecimalString()
+    }
+    
 }
 
 enum RegId: Int {

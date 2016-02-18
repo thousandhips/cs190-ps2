@@ -46,6 +46,9 @@
 //    register A has the displayable form (floating point) A=91250000000902 and register B holds
 //    a mask to correctly position the decimal point: B=02009999999000.
 
+// This is a 15-digit display.
+let numberOfSSCs = 15
+
 enum DisplayableCharacters: Character {
     case Char0 = "0"
     case Char1 = "1"

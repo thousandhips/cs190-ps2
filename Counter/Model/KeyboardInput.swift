@@ -20,18 +20,21 @@
 //     0o30        0o31  0o32    0o33
 //
 // -       7          8           9
-// 0o30   0o31       0o32        0o32
+// 0o40   0o41       0o42        0o43
 //
 // +       4          5           6
-// 0o40   0o41       0o42        0o43
-// *       1          2           3
-//
-// /       0          .          PI
 // 0o50   0o51       0o52        0o53
 //
-// In the app, the key codes come from view tags.
+// *       1          2           3
+// 0o60   0o61       0o62        0o63
+//
+// /       0          .          PI
+// 0o70   0o71       0o72        0o73
+//
+// The key codes must agree with the view tags set using Xcode and the storyboard.
 // View tags are set in Xcode in the attributes inspector for each button.
-// However, in Xcode, you need to convert to decimal. For example, key 0 is 57.
+// However, in Xcode, you don't enterview the value in to octal. So you'd enter
+// 57 for the view tag for key 0, not 0o71.
 
 typealias KeyCode = UInt8
 
