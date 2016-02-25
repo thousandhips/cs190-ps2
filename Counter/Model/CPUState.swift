@@ -36,6 +36,7 @@ func hexCharacterFromNibble(nibble: Nibble) -> Character {
     return Character(String(format:"%1X", nibble))
 }
 
+
 // A register is 14 nibbles (56 bits). Mostly nibbles are used to represent the digits 0-9, but the leftmost one, nibble 13, corresponds to the sign of the mantissa, nibbles 12 to 3 inclusive represent 10 digits of mantissa, and nibbles 2 to 0 represent the exponent.
 struct Register {
     var nibbles: [Nibble] = [Nibble](count:RegisterLength, repeatedValue: UInt8(0))
@@ -118,6 +119,7 @@ class CPUState {
     // Make use of the enums RegisterASpecialValues and RegisterBSpecialValues so that you don't have to hard
     // code "2" to mean a decimal point (similarly for the other special values).
     func canonicalize() {
+        
         let registerC = Register(fromDecimalString: "01000000000002")
         registers[RegId.C.rawValue] = registerC
     }
