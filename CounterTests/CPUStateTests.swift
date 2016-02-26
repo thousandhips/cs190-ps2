@@ -33,6 +33,7 @@ class CPUStateTests: XCTestCase {
         let registerC = cpuState.registers[RegId.C.rawValue]
         let actualC = registerC.asDecimalString()
         
+        
         XCTAssert(expectedC == actualC)
     }
     

@@ -75,7 +75,7 @@ class CPUState {
     
     // The singleton starts in the traditional state that an HP-35 is in when you power it on.
     // The display just shows 0 and a decimal point.
-    static let sharedInstance = CPUState(decimalStringA: "91250000000002", decimalStringB: "02009999999999")
+    static let sharedInstance = CPUState(decimalStringA: "00000000000000", decimalStringB: "02999999999999")
     
     var registers = [Register](count:7, repeatedValue:Register())
     
@@ -94,10 +94,7 @@ class CPUState {
         
         canonicalize()
     }
-    
-    // I hope these getters and setters are all I need to do the implementation needed for InputHandler.swift.
-    // Actually, they are probably the wrong primitives and will have to be redone. The right primitives are the ones
-    // in the HP-35 microcode!
+
     
     func getRegisterValue(regId: RegId) -> Register {
         return registers[regId.rawValue]
@@ -107,57 +104,83 @@ class CPUState {
         registers[regId.rawValue] = newValue
     }
 
-    // Comments regarding canonicalize()....
-    //
-    // Computes and stores register C from whatever is currently in A and B.
-    //
-    // This function is unimplemented. I hard-coded in a value that will make the first of the five test cases pass.
-    //
-    // When you are done re-implementing this method, all five test cases should pass (and any other test cases
-    // that obey the rules described in comments at the top of DisplayDecoder.swift).
-    //
-    // Make use of the enums RegisterASpecialValues and RegisterBSpecialValues so that you don't have to hard
-    // code "2" to mean a decimal point (similarly for the other special values).
     func canonicalize( ) {
-        var registerA = registers[ RegId.A.rawValue]
-        var registerB = registers[ RegId.B.rawValue]
+        var registerA = registers[RegId.A.rawValue]
+        var registerB = registers[RegId.B.rawValue]
         
-        var registerC = Register(fromDecimalString: "91000000000002")
+        
+        var MantissaIsPositive = false
+        var ExponentIsPositve = false
+        
+        var registerC = Register(fromDecimalString: "00000000000000")
         registers[RegId.C.rawValue] = registerC
         
         var AIndex = 13
         var CIndex = 12
         
-        if( registerA.nibbles[AIndex] == 9)
-        { registerC.nibbles[AIndex]=UInt8(9) }
-        else { registerC.nibbles[AIndex]=UInt8(0) }
+        //Determine signs of mantissa and exponent.
+        if( registerA.nibbles[AIndex] == 0)
+        {   MantissaIsPositive = true}
+        if( registerA.nibbles[ExponentLength - 1] == 0)
+        {   ExponentIsPositve = true
+        }
+        
+        //Copy mantissa sign.
+        if( MantissaIsPositive)
+        { registerC.nibbles[AIndex]=UInt8(0) }
+        else { registerC.nibbles[AIndex]=UInt8(9) }
         
         AIndex--
         
+        //skip leading zeroes
         while( registerA.nibbles[AIndex] == 0 && AIndex > ExponentLength)
         { AIndex-- }
         
         while( AIndex > ExponentLength && registerB.nibbles[AIndex] != 9) {
-            print( AIndex )
         registerC.nibbles[CIndex] = registerA.nibbles[AIndex]
         CIndex--
-            AIndex--
+        AIndex--
         }
+        //Move on to the exponent places, if not there already.
+        AIndex = ExponentLength - 1
+        CIndex = ExponentLength - 1
         
-        for i in 0...13{
-            print( registerC.nibbles[13-i] )
-        }
-        
-        AIndex = ExponentLength
-        CIndex = ExponentLength
-        
-        if( registerA.nibbles[AIndex] == 0)
-        {   while( AIndex >= 0 ){
-            registerC.nibbles[CIndex] = 0}
+        //Determine the exponent places, path dependent on the exponent's sign.
+        if( ExponentIsPositve)
+        {
+            //If it's positive just copy
+            while( AIndex >= 0 )
+            {
+            registerC.nibbles[AIndex] = registerA.nibbles[AIndex]
             AIndex--
             }
         }
+        else{
+            //Negative takes a little more calculation.
+            //Copy the sign.
+            registerC.nibbles[AIndex] = registerA.nibbles[AIndex]
+            AIndex--
+            //Calculate tens place.
+            registerC.nibbles[AIndex] = 10 - registerA.nibbles[AIndex]
+            AIndex--
+            //Carry the one.
+            if( registerC.nibbles[AIndex] != 0 )
+            { registerC.nibbles[AIndex + 1]-- }
+            else
+            //If tens places is zero you want it to say zero instead of ten.
+            { registerC.nibbles[AIndex + 1] = 0}
+            //Calculate the ones place
+            if( registerA.nibbles[AIndex] == 0 )
+            { registerC.nibbles[AIndex] = 0 }
+            else{
+            registerC.nibbles[AIndex] = 10 - registerA.nibbles[AIndex]
+            }
+            
+        }
         
+    }
+
+    
     
     
     func decimalStringForRegister(regId: RegId) -> String {
