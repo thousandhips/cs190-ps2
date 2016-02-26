@@ -75,7 +75,7 @@ class CPUState {
     
     // The singleton starts in the traditional state that an HP-35 is in when you power it on.
     // The display just shows 0 and a decimal point.
-    static let sharedInstance = CPUState(decimalStringA: "00000000000000", decimalStringB: "02999999999999")
+    static let sharedInstance = CPUState(decimalStringA: "91250000000002", decimalStringB: "02009999999999")
     
     var registers = [Register](count:7, repeatedValue:Register())
     
@@ -118,17 +118,53 @@ class CPUState {
     //
     // Make use of the enums RegisterASpecialValues and RegisterBSpecialValues so that you don't have to hard
     // code "2" to mean a decimal point (similarly for the other special values).
-    func canonicalize() {
+    func canonicalize( ) {
+        var registerA = registers[ RegId.A.rawValue]
+        var registerB = registers[ RegId.B.rawValue]
         
-        let registerC = Register(fromDecimalString: "01000000000002")
+        var registerC = Register(fromDecimalString: "91000000000002")
         registers[RegId.C.rawValue] = registerC
-    }
+        
+        var AIndex = 13
+        var CIndex = 12
+        
+        if( registerA.nibbles[AIndex] == 9)
+        { registerC.nibbles[AIndex]=UInt8(9) }
+        else { registerC.nibbles[AIndex]=UInt8(0) }
+        
+        AIndex--
+        
+        while( registerA.nibbles[AIndex] == 0 && AIndex > ExponentLength)
+        { AIndex-- }
+        
+        while( AIndex > ExponentLength && registerB.nibbles[AIndex] != 9) {
+            print( AIndex )
+        registerC.nibbles[CIndex] = registerA.nibbles[AIndex]
+        CIndex--
+            AIndex--
+        }
+        
+        for i in 0...13{
+            print( registerC.nibbles[13-i] )
+        }
+        
+        AIndex = ExponentLength
+        CIndex = ExponentLength
+        
+        if( registerA.nibbles[AIndex] == 0)
+        {   while( AIndex >= 0 ){
+            registerC.nibbles[CIndex] = 0}
+            AIndex--
+            }
+        }
+        
+    
     
     func decimalStringForRegister(regId: RegId) -> String {
         let register = registers[regId.rawValue]
         return register.asDecimalString()
     }
-    
+
 }
 
 enum RegId: Int {
